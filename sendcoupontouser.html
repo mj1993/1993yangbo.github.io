@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/static/layui/layui.css"  media="all">
+	
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="../../static/css/sendcoupontouser.css"/> -->
+
+	</head>
+	<body>
+
+		<form  id="fm" action="" method="post" class="Coupon">
+
+			<ul>
+			
+		
+		 
+				<li><span>优惠券面额(单位:分):</span><input type="text"   required   class="form-control  inp text" name="denomination"/></li>
+				
+				<li><span>起始日期:</span><input type="text"   required name="smallStartTimeStr" id="dateb" class="form-control  inp text" /></li>
+				<li><span>结束日期:</span><input type="text"   required name="smallEndTimeStr" id="dateo" class="form-control  inp text" /></li>
+				<li><span>赠送用户手机号:</span><input type="text" required  name="phoneNum"  class="form-control  inp tel text" /><span>(注:多个用户手机号请用<b>英文的逗号</b>分隔)</span></li>
+			</ul>
+			<input type="submit" name="" id="sub" value="提交"  class="btn btn-info" style="margin-left: 40px; margin-top: 20px;"/>
+		    <input type="button" class="btn btn-info clean" value="取消"  style="margin-left: 40px; margin-top: 20px;"/>
+
+		</form>
+		<div class="Bomb">
+			<p id='dip'></p>
+			<input type="button" class="btn btn-info" value="确定" />
+
+		</div>
+
+	</body>
+	<script src="../../static/js/sendcoupontouser.js"></script>
+	 <script>
+	     $('#sub').click(function(){
+             
+             
+              $.ajax({
+              	url : 'http://180.76.242.180:8080/coupon/send-coupon-to-user',
+              	type : 'post',
+              	data : $('#fm').serialize(),
+              	dataType : 'json',
+              	success:function (data){
+                   console.log(data.message)
+              	}
+              })
+
+
+
+
+			 return false
+
+		 })
+	 </script>
+
+
+
+</html>
